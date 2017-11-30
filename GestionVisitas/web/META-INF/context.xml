@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Context path="/GestionVisitas">
-<Resource name="jdbc/AccesoBD" auth="Container" type="java.sql.DataSource" maxActive="100" maxdle="30" maxWait="10000" username="usuario" password="clave" driverClassName="com.mysql.jdbc.Driver" url="jdbc:mysql://localhost:3306/GestionVisitas"/>
+<Resource name="jdbc/AccesoBD" auth="Container" type="java.sql.DataSource" maxActive="100" maxdle="30" maxWait="10000" username="usuario" password="clave" driverClassName="com.mysql.jdbc.Driver" url="jdbc:mysql://localhost:3306/gestionvisitas"/>
 </Context>

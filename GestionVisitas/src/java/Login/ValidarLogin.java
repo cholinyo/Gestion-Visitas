@@ -25,7 +25,7 @@ import org.apache.tomcat.jdbc.pool.DataSource;
  * @author vcaruncho
  */
 public class ValidarLogin extends HttpServlet {
-    private DataSource fuenteDatos = null;
+    private DataSource fuenteDatos;
     @Override
     public void init (ServletConfig conf)
         throws ServletException {
@@ -33,30 +33,27 @@ public class ValidarLogin extends HttpServlet {
         Context ctx;
         try {
             ctx = new InitialContext();
-            fuenteDatos = (DataSource) ctx.lookup("java:comp/env/jdbc/AccesoDB");
+            fuenteDatos = (DataSource)ctx.lookup("java:comp/env/jdbc/AccesoDB");
         }
         catch(NamingException  e) {
+            
+            e.printStackTrace();
+            
         }    
             
         }
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
+    
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        //La salida de la página será HTML
         response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out = response.getWriter();
+        PrintWriter out = response.getWriter();  
         RequestDispatcher rd;
         String user = request.getParameter("login");
         String pass = request.getParameter("password");
-        Connection conexion=null;
+        out.print(fuenteDatos);
+/*      Connection conexion=null;
         synchronized(fuenteDatos){
         try{
             conexion=fuenteDatos.getConnection();
@@ -66,5 +63,7 @@ public class ValidarLogin extends HttpServlet {
             }
         }  
         //Conectar a BBDD y comprobar si admin es correcto
+*/
+        
     }
 }
